@@ -12,7 +12,7 @@ namespace Memory
 		// Get the base address of the module
 		HMODULE moduleHandle = GetModuleHandleA(moduleName);
 		if (!moduleHandle) {
-			std::cerr << _XOR_("Failed to get module handle.") << std::endl;
+			std::cerr << _XOR_("g") << std::endl;
 			return 0;
 		}
 
@@ -48,7 +48,7 @@ namespace Memory
 			}
 		}
 
-		std::cerr << _XOR_("Pattern not found.") << std::endl;
+		std::cerr << _XOR_("g") << std::endl;
 		return 0;
 	}
 
