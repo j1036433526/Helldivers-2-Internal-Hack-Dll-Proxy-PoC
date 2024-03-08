@@ -116,7 +116,7 @@ DWORD WINAPI Payload(LPVOID lpParam)
             break;
 
         case 13: // Enter key
-            std::cout << _XOR_("Activate Cheat Feature.\n");
+            std::cout << _XOR_("A\n");
             break;
 
         case 27: // Esc key
@@ -153,7 +153,7 @@ DWORD WINAPI Payload(LPVOID lpParam)
                     Memory::CreateTrampoline(GrenadesAddress, memory);
                     Memory::WriteAssemblyInstructions((uintptr_t)memory, GrenadesAddress + 14, GrenadeBytes, Memory::ArrayLength(GrenadeBytes));
                     gData.InfGrenadesLegit = !gData.InfGrenadesLegit;
-                    printf(_XOR_("[Active] Infinite Grenades(Legit)\n"));
+                    printf(_XOR_("1\n"));
                 }
             }
 
@@ -194,7 +194,7 @@ DWORD WINAPI Payload(LPVOID lpParam)
                     Memory::Patch((LPVOID)(aob_GetMinorInterestBlipIcon), ShowAllMapIconsByte3, 2);
                     Memory::Patch((LPVOID)(aob_CheckMissionBlip), ShowAllMapIconsByte2n4, 2);
                     gData.ShowAllMapIcons = !gData.ShowAllMapIcons;
-                    printf(_XOR_("[Active] Show All Map Icons\n"));
+                    printf(_XOR_("2\n"));
                 }
             }
 
@@ -210,7 +210,7 @@ DWORD WINAPI Payload(LPVOID lpParam)
                     uintptr_t AllStratagems = Memory::FindPattern(_XOR_("game.dll"), _XOR_("48 89 5C 24 ?? 48 8B D9 85 D2 75 09"));
                     Memory::Patch((LPVOID)(AllStratagems), AllStratagemsByte, 3);
                     gData.AllStratagems = !gData.AllStratagems;
-                    printf(_XOR_("[Active] Unlock All Stratagems\n"));
+                    printf(_XOR_("3\n"));
                 }
             }
 
@@ -226,7 +226,7 @@ DWORD WINAPI Payload(LPVOID lpParam)
                     uintptr_t AllEquipment = Memory::FindPattern(_XOR_("game.dll"), _XOR_("83 B9 ?? ?? ?? ?? ?? 75 ?? 85 D2 74 ?? 44 8B 89 ?? ?? ?? ?? 45 33 C0 45 85 C9 74 ?? 48 8D 81 ?? ?? ?? ?? 39 50 ?? 74 ?? 41 FF C0 48 83 C0 ?? 45 3B C1 72 ?? 32 C0 C3 8B 00 48 69 C8"));
                     Memory::Patch((LPVOID)(AllEquipment+11), AllEquipmentByte, 3);
                     gData.AllEquipment = !gData.AllEquipment;
-                    printf(_XOR_("[Active] Unlock All Equipment\n"));
+                    printf(_XOR_("4\n"));
                 }
             }
 
@@ -242,33 +242,10 @@ DWORD WINAPI Payload(LPVOID lpParam)
                     uintptr_t AllArmor = Memory::FindPattern(_XOR_("game.dll"), _XOR_("48 83 EC ?? 44 8B 49 ?? 45 33 C0"));
                     Memory::Patch((LPVOID)(AllArmor), AllArmorByte, 3);
                     gData.AllArmor = !gData.AllArmor;
-                    printf(_XOR_("[Active] Unlock All Armor\n"));
+                    printf(_XOR_("5\n"));
                 }
             }
 
-            /*if (checkboxes[i].title == "One / Two Hit Kill ( Bile Titan Bug, Aim Only Head )")
-            {
-                if (!gData.OHK)
-                {
-                    BYTE OHKByte[] =
-                    {
-                        0x83, 0xBF, 0x38, 0x0B, 0x00, 0x00, 0x0A,
-                        0x0F, 0x85, 0x05, 0x00, 0x00, 0x00,
-                        0xE9, 0x18, 0x00, 0x00, 0x00,
-                        0xC7, 0x87, 0x44, 0x64, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, 0x66, 0x4A, 0x6B, 0x80, 0x01, 0x00, 0x00, 0x00,
-                        0x89, 0x87, 0x44, 0x64, 0x00, 0x00,
-                        0xFF, 0x25, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-                    };
-
-                    uintptr_t OHK = Memory::FindPattern("game.dll", "89 87 44 64 00 00");
-                    LPVOID memory = Memory::AllocateMemory(OHK, 0x100);
-                    Memory::CreateTrampoline(OHK, memory);
-                    Memory::WriteAssemblyInstructions((uintptr_t)memory, OHK + 15, OHKByte, Memory::ArrayLength(OHKByte));
-                    gData.OHK = !gData.OHK;
-                    printf("[Active] Instant Railgun\n");
-                }
-            }*/
             
 
 
