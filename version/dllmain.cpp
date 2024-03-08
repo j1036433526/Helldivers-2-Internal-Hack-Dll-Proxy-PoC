@@ -251,7 +251,7 @@ DWORD WINAPI Payload(LPVOID lpParam)
 
         }
     }
-    printf(_XOR_("[Exit] Unload\n"));
+    printf(_XOR_("6\n"));
     FreeConsole();
     FreeLibraryAndExitThread(g_hModule, 0);
     return 0;
